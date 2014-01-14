@@ -1,0 +1,59 @@
+extends ../layouts/application
+block before_start
+  link(  rel="stylesheet", text="text/css", href="/static/stylesheets/application.css")
+
+block content
+  section(style="min-height: 500px;")
+    .separator
+      .line
+      h2 Listas
+      .line
+    .clear
+    table.lists
+      caption Mis Listas
+      thead
+        tr
+          th( width= "20") No.
+          th Nombre
+          th Creada
+          th Acciones
+      tbody
+        - for( var i in datasets ){
+          tr
+            th= +i + 1
+            td 
+              a( href="/datasets/" + datasets[i].id  )= datasets[i].value.name
+            td= datasets[i].value.created_at
+            td
+              a(href="/datasets/" + datasets[i].id + "/edit") Editar
+              |  | 
+              button.btn-delete(type="button", data-type="datasets", data-dataset=datasets[i].id, href="/datasets/" + datasets[i].id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: 0.8em;" ) Eliminar
+                
+        - }
+    .separator
+      a( href="/datasets/new" ) Crear Una Lista De Datos
+
+block before_end
+  script( src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" )
+  script.
+    (function( $ ){
+      $(function(){
+        $( '.btn-delete[data-type="datasets"]' ).on( 'click', function( event ){
+          event.preventDefault();
+
+          set = $( this ).data( 'dataset' );
+          console.log( set );
+          $.ajax({
+            url: '/datasets/' + set,
+            method: 'DELETE',
+            dataType: 'json',
+            success: function( data ){
+              console.log( data );
+              if( data.status == true ){
+                window.location.reload();
+              }
+            }
+          })
+        })
+      }) 
+    })( jQuery )

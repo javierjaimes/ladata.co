@@ -1,0 +1,106 @@
+extends layouts/home
+block before_start
+  script(src="static/javascripts/modernizr.custom.js")
+
+block content
+  header
+    .wrapper
+      .content
+        hgroup
+          h1 LaData.CO
+          h2 Catalogo de Datos Abiertos Colombianos. Por unos datos abiertos y transparentes!
+        .clear
+        .read-on
+          a.btn.btn-large.btn-block.btn-inverse(href="/login") Empezar a compartir mis datos.
+        .clear
+  a#about.scroll-point
+  .sectiongrey
+    section
+      .separator
+        .line
+        h2 Acerca De
+        .line
+      .grid3
+        p Ladata.co es una herramienta que pretende construir el primer catalogo de datos abiertos para uso y desuso de todos los colombianos. Aun no sabes que es #OpenData? <a href="http://opendatahandbook.org/es/introduction/index.html" target="_blank">Aqui una breve introduccion <a href="http://opendatahandbook.org/es/introduction/index.html"></a>
+        p En ladata.co encontraras cientos de listas de datos abiertos utiles a la hora de crear cientos de aplicaciones webs/moviles o para cualquier tipo de uso. Aun no tenemos una licencia para los datos porque creemos que los datos son de todos y para todos.
+  a#freebies.scroll-point
+  .clear
+  .sectionteal
+    section
+      .separator
+        .line
+        h2 Catalogo
+        .line
+      .grid3
+        article.col
+          figure
+            img(src="static/images/free-html5-responsive-template.jpg", alt="free-html5-template")
+          h3
+            a(href="#")
+              | Responsive
+              br
+              | HTML5 Template
+          p Created by using the latest HTML5 and CSS3 techniques, Brownie is a simple and clean Free Responsive HTML5 portfolio and business website template.
+        article.col
+          figure
+            img(src="static/images/free-html5-responsive-template.jpg", alt="free-html5-template")
+          h3
+            a(href="#")
+              | Responsive
+              br
+              | HTML5 Template
+          p Created by using the latest HTML5 and CSS3 techniques, Brownie is a simple and clean Free Responsive HTML5 portfolio and business website template.
+        article.col
+          figure
+            img(src="static/images/free-html5-responsive-template.jpg", alt="free-html5-template")
+          h3
+            a(href="#")
+              | Responsive
+              br
+              | HTML5 Template
+          p Created by using the latest HTML5 and CSS3 techniques, Brownie is a simple and clean Free Responsive HTML5 portfolio and business website template.
+  a#contact.scroll-point
+  .clear
+  .sectionorange
+    section
+      .separator
+        .line
+        h2 Contacto
+        .line
+      .clear
+      #form.contact-form.shadow
+        form#contact_form(method="post", action="#")
+          input(type="hidden", name="csrf_token", value="")
+          input(type="text", name="job-title-flx", value="", style="display:none;")
+          input#lang(type="hidden", name="lang", value="en")
+          h1 Te contestaremos en 24 Horas.
+          fieldset
+            label(for="name") Su nombre *
+            input#name(type="text", name="name", value="", required)
+            label(for="email") Su corre electronico *
+            input#email(type="text", name="email", value="", required)
+            label(for="phone") Telefono *
+            input#phone(type="text", name="phone", value="", required)
+          fieldset
+            label(for="message") Su mensaje *
+            textarea#message(name="message")
+          .clear
+            fieldset.fsbumit
+              input#submit.btn.btn-primary.btn-submit( type="button", value="Enviar")
+      #thanks.contact-form.hidden
+        h1.color
+          | Gracias
+          span#client_name !
+        .thanks-txt
+      .bottom-shadow
+      .no-shadow.hidden
+      .clear
+block before_end
+  script( src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" )
+  script.
+    window.jQuery || document.write('<script src="static/javascripts/jquery-1.10.2.min.js"><\/script>');
+  script(src="static/javascripts/jquery.carouFredSel-6.2.0.js", text="text/javascript")
+  script( src="static/javascripts/jquery.localscroll-1.2.7.js" )
+  script( src="static/javascripts/jquery.scrollTo-1.4.3.1.js")
+  script( src="static/javascripts/home.js" )
+

@@ -1,0 +1,19 @@
+extends ../layouts/application
+
+block content
+  #main
+    form( action="/users", method="post" )
+      p
+        label Nombre
+        input(name="name", type="text" )
+      p
+        label Correo Electronico
+        input(name="email", type="text" )
+      p
+        label clave
+        input(name="password", type="password" )
+      p
+        label Contrasena
+        input(name="password_confirmation", type="password" )
+      p
+        input(type="submit",value="Registrarse" )

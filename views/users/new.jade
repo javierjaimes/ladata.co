@@ -1,0 +1,50 @@
+extends ../layouts/page
+block before_start
+  link(  rel="stylesheet", text="text/css", href="/static/stylesheets/application.css")
+
+block content
+  header.sectiongrey
+    .wrapper
+      section(style="padding-top: 100px;")
+        .separator
+          .line
+          h2 Miembros
+          .line
+        .clear
+        #form.contact-form
+          form#contact_form(method="post", action="#")
+            h1 Sea parte de nuestra comunidad
+            fieldset(style="margin: 0 auto; float: none;")
+              label(for="name") Su Nombre *
+              input#name.required(type="text", name="name")
+              label(for="email") Su Correo Electronico *
+              input#email.required.email(type="text", name="email")
+              label(for="password") Su Clave *
+              input#password.required(type="password", name="password")
+              label(for="password_confirmation") Confirmar Su Clave *
+              input#password_confirmation.required(type="password", name="password_confirmation")
+            .clear
+            fieldset.fsubmit(style="margin: 0 auto; float: none;")
+              button#submit.btn.btn-primary.btn-submit( type="submit" ) Registrarse
+              p 
+                | Ya eres un miembro? 
+                a( href="/login", style="color: #48c9b0 !important;" ) Iniciar Sesion
+block before_end
+  script( src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" )
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js")
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_es.js")
+  script.
+    ( function( $ ){
+      $( function(){
+        //Validate form
+        $( '#form form' ).validate({
+          errorElement: 'span',
+          rules: {
+            "password_confirmation": {
+              required: true,
+              equalTo: '#password'
+            }
+          }
+        })
+      }) 
+    })( jQuery )

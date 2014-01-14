@@ -1,0 +1,40 @@
+extends ../layouts/page
+block before_start
+  link(  rel="stylesheet", text="text/css", href="/static/stylesheets/application.css")
+block content
+  header.sectiongrey
+    .wrapper
+      section(style="padding-top: 100px;")
+        .separator
+          .line
+          h2 Conectate
+          .line
+        .clear
+        #form.contact-form
+          form#contact_form(method="post", action="#")
+            h1 Area de miembros
+            fieldset(style="margin: 0 auto; float: none;")
+              label(for="username") Usuario *
+              input#username.required(type="text", name="username")
+              label(for="password") Clave *
+              input#password.required(type="password", name="password")
+            fieldset(style="margin: 0 auto; float: none;")
+            fieldset.fsubmit(style="margin: 0 auto; float: none;")
+              button#submit.btn.btn-primary.btn-submit( type="submit" ) Ingresar
+            .clear
+            p 
+              | Aun no eres un miembro? 
+              a( href="/signup", style="color: #48c9b0 !important;") Registrate Aqui.
+block before_end
+  script( src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" )
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js")
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/localization/messages_es.js")
+  script.
+    ( function( $ ){
+      $( function(){
+        //Validate form
+        $( '#form form' ).validate({
+          errorElement: 'span',
+        })
+      }) 
+    })( jQuery )
