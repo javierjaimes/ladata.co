@@ -1,0 +1,60 @@
+extends ../layouts/application
+block before_start
+  link(  rel="stylesheet", text="text/css", href="/static/stylesheets/application.css")
+
+block content
+  section(style="min-height: 500px;")
+    .separator
+      .line
+      h2 Aplicaciones
+      .line
+    table.clients
+      caption Mis Aplicaciones
+      thead
+        tr
+          th( width="20" ) No.
+          th Nombre
+          th ID 
+          th LLave Secreta
+          th Acciones
+      tbody
+        -for( var i in clients ){
+          tr
+            td= +i + 1
+            td
+              a( href="/clients/" + clients[i].id )= clients[i].value.name
+            td= clients[i].id
+            td= clients[i].value.secret
+            td
+              a( href="/clients/" + clients[i].id + "/edit" ) Editar
+              | | 
+              a.btn-delete( href="/clients/" + clients[i].id, data-type="client", data-client=clients[i].id) Eliminar
+        - } 
+    .separator
+      a(href="/clients/new") Crear una aplicacion
+
+block  before_end
+  script( src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" )
+  script.
+   
+    (function( $ ){
+      $(function(){
+        $( '.btn-delete[data-type="client"]' ).on( 'click', function( event ){
+          event.preventDefault();
+
+          client = $( this ).data( 'client' );
+          console.log( client );
+          $.ajax({
+            url: '/clients/' + client,
+            method: 'DELETE',
+            dataType: 'json',
+            success: function( data ){
+              console.log( data );
+              if( data.status == true ){
+                window.location = '/clients';
+              }
+            }
+          })
+        })
+      })
+    })( jQuery )

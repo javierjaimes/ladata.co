@@ -1,0 +1,90 @@
+!!! 5
+html.no-js(lang="en", dir="ltr")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    title Ladata.co || La Manera Mas Simple de Compartir Su "Data"
+    meta(name="description", content="")
+    meta(name="viewport", content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width")
+
+    link(rel="dns-prefetch", href="http://fonts.googleapis.com/")
+    link(rel="dns-prefetch", href="http://ajax.googleapis.com/")
+    link(rel="dns-prefetch", href="http://html5shim.googlecode.com/")
+    link(rel="dns-prefetch", href="http://google-analytics.com/")
+    link(rel="shortcut icon", href="static/images/favicon.ico")
+
+    link(rel="apple-touch-icon", href="static/images/apple-touch-icon-57x57-precomposed.png")
+    link(rel="apple-touch-icon", size="72x72", href="static/images/apple-touch-icon-72x72-ipad.png")
+    link(rel="apple-touch-icon", size="114x114", href="static/images/apple-touch-icon-114x114-retina.png")
+    link(rel="apple-touch-icon", size="144x144", href="static/images/apple-touch-icon-144x144-retina.png")
+
+    link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic")
+    link(rel="stylesheet", type="text/css", href="static/stylesheets/reset.css")
+    link(rel="stylesheet", type="text/css", href="static/stylesheets/styles.css")
+    link(rel="stylesheet", type="text/css", href="static/stylesheets/font-awesome.css")
+
+    //if lt IE
+      link(rel="stylesheet", type="text/css", media="all", href="static/stylesheets/fix-old-ie.css")
+    //if lt IE 9
+      script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+
+    block before_start
+  body
+    //if IE
+      script(src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js")
+      style(type="text/css")
+        .chromeFrameInstallDefaultStyle { width: 100%; border: 5px solid #ffa700; }</style>
+        div#prompt
+      script
+        window.attachEvent("onload", function() {CFInstall.check({mode: "overlay", node: "prompt"});});
+    #top
+      nav
+        .logo.clearfix
+          a( href="/" )
+        ul#menu
+          li.first
+            a(href="/") Inicio
+          li
+            a(href="#") Acerca De
+          li
+            a(href="#") Ser parte
+          li
+            a( href="#" ) Contacto
+          li
+            a( href="/login" ) Iniciar Sesion
+
+        form.menu-dropdown.hidden
+          select(onchange="location= this.options[this.selectedIndex].value;")
+            option( value="#home" ) Inicio
+            option( value="#about" ) Acerca De
+            option( value="#freebies" ) Voluntarios
+            option( value="#clients" ) Iniciar Sesion
+            option( value="#contact" ) Contacto
+        a.menu-btn(href="#menu-footer")
+    block content
+    .sectionblue
+      footer#footer
+        .wrapper
+          .left-content
+            a#menu-footer
+            .logo
+              img(src="static/images/logo.png", width="136", height="36")
+            nav.menu-footer
+              ul
+                li
+                  a(href="#") Acerca de
+                li
+                  a(href="#") Voluntarios
+                li
+                  a(href="/login") Iniciar Sesion
+                li
+                  a(href="#") Contacto
+          .right-content
+            .social
+              ul
+                li
+                  a.icon-twitter(href="", target="_blank", rel="nofollow")
+                li
+                  a.icon-facebook(href="", target="_blank", rel="nofollow")
+    block before_end
+

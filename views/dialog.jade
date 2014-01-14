@@ -1,0 +1,15 @@
+doctype 5
+html(lang="en")
+  head
+  title ladata.co
+  body
+    p Autorizar o declinar
+    p #{user.name}
+    p
+      b #{client_id.name} is requesting access to your account.
+    p Do you approve?
+
+    form( action='/dialog/authorize/decision', method='post')
+      input(name='transaction_id', type='hidden', value='#{transactionID}')
+      input(type='submit', value='Allow', id='allow')
+      input(type='submit', value='Deny', name='cancel', id='deny')

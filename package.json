@@ -1,0 +1,22 @@
+{
+  "name": "ladata.co",
+  "version": "0.0.1",
+  "description": "The front-end for ladata.co",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@senorpasajero",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~3.4.6",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "jade": "~0.35.0",
+    "hat": "0.0.3",
+    "oauth2orize": "~1.0.0",
+    "connect-ensure-login": "~0.1.1",
+    "cradle": "~0.6.6",
+    "bcrypt": "~0.7.7"
+  }
+}
