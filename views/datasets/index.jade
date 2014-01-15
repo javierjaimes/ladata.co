@@ -22,7 +22,7 @@ block content
           tr
             th= +i + 1
             td 
-              a( href="/datasets/" + sets[i].id  )= sets[i].value.name
+              a( href="/datasets/" + sets[i]._id  )= sets[i].value.name
             td= sets[i].value.created_at
             td
               a(href="/datasets/" + sets[i].id + "/edit") Editar
