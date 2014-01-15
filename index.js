@@ -13,14 +13,16 @@ var express = require( 'express' ),
 /*****
  * Database Connection
  */
+process.env.CLOUDANT_URL = "https://app21253353.heroku:do8J5YEDiEgYrNfcNTBi04lp@app21253353.heroku.cloudant.com"; 
 if( process.env.CLOUDANT_URL ){
-  var cloudant = process.env.CLOUDANT_URL;
+  console.log( 'CONNECT CLOUDANT' );
+
+  var cloudant_url = url.parse( process.env.CLOUDANT_URL);
   cradle.setup({
-    host: cloudant.hostname,
-    auth: cloudant.auth,
-    cache: true,
-    secure: true,
-    raw: false
+    'host': cloudant_url.hostname,
+    'auth': cloudant_url.auth,
+    'cache': true,
+    'raw': false 
   })
   var db = new(cradle.Connection)().database('ladata-co');
 }else{
