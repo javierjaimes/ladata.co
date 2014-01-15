@@ -515,4 +515,4 @@ app.get('/dialog/authorize',
 app.post('/dialog/authorize/decision', session.ensureLoggedIn(), server.decision() );
 
 app.use(app.router);
-app.listen(3001);
+app.listen( process.env.PORT || 3001);
