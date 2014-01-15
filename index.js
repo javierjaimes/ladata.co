@@ -252,7 +252,7 @@ app.get( '/datasets', session.ensureLoggedIn('/login'), function( req, res ){
 
   db.view( 'datasets/byUser', { key: user }, function( err, docs){
     console.log( docs );
-    res.render( 'datasets/index', { 'datasets': docs } );
+    res.render( 'datasets/index', { 'sets': docs } );
   } )
 })
 
