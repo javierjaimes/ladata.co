@@ -4,6 +4,7 @@ var express = require( 'express' ),
     session = require('connect-ensure-login'),
     bcrypt = require('bcrypt'),
     hat = require( 'hat' ),
+    url = require( 'url' ),
     oauth2orize = require( 'oauth2orize' ),
     LocalStrategy = require( 'passport-local' ).Strategy,
     app = express(),
@@ -12,7 +13,12 @@ var express = require( 'express' ),
 /*****
  * Database Connection
  */
-var db = new(cradle.Connection)().database('ladata-co');
+if( process.env.CLOUDANT_URL ){
+  var cloudant = process.env.CLOUDANT_URL;
+  var db = new(cradle.Connection)( cloudant.hostname, cloudant.port, { 'auth': cloudant.auth } ).database('ladata-co');
+}else{
+  var db = new(cradle.Connection)().database( 'ladata-co' );
+}
 db.exists(function (err, exists) {
   if (err) {
     console.log('error', err);
