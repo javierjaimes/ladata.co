@@ -22,10 +22,10 @@ block content
           tr
             th= +i + 1
             td 
-              a( href="/datasets/" + sets[i]._id  )= sets[i].value.name
+              a( href="/datasets/" + laprueba[i]._id  )= sets[i].value.name
             td= sets[i].value.created_at
             td
-              a(href="/datasets/" + sets[i].id + "/edit") Editar
+              a(href="/datasets/" + laprueba[i].id + "/edit") Editar
               |  | 
               button.btn-delete(type="button", data-type="datasets", data-dataset=sets[i].id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: 0.8em;" ) Eliminar
                 
