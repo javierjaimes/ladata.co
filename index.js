@@ -18,9 +18,14 @@ if( process.env.CLOUDANT_URL ){
   console.log( 'CONNECT CLOUDANT' );
 
   var cloudant_url = url.parse( process.env.CLOUDANT_URL);
+  var cloudant_auth = cloudant_url.auth.split( ':' );
+  console.log( cloudant_auth );
   cradle.setup({
     'host': cloudant_url.hostname,
-    'auth': cloudant_url.auth,
+    'auth': {
+      'username': cloudant_auth[0],
+      'password': cloudant_auth[1]
+    },
     'cache': true,
     'raw': false 
   })
