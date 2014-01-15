@@ -15,7 +15,14 @@ var express = require( 'express' ),
  */
 if( process.env.CLOUDANT_URL ){
   var cloudant = process.env.CLOUDANT_URL;
-  var db = new(cradle.Connection)( cloudant.hostname, '', { 'auth': cloudant.auth } ).database('ladata-co');
+  cradle.setup({
+    host: cloudant.hostname,
+    auth: cloudant.auth,
+    cache: true,
+    secure: true,
+    raw: false
+  })
+  var db = new(cradle.Connection)().database('ladata-co');
 }else{
   var db = new(cradle.Connection)().database( 'ladata-co' );
 }
