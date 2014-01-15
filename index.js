@@ -13,7 +13,6 @@ var express = require( 'express' ),
 /*****
  * Database Connection
  */
-process.env.CLOUDANT_URL = "https://app21253353.heroku:do8J5YEDiEgYrNfcNTBi04lp@app21253353.heroku.cloudant.com"; 
 if( process.env.CLOUDANT_URL ){
   console.log( 'CONNECT CLOUDANT' );
 
