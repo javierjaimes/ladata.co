@@ -114,7 +114,7 @@ app.get( '/', function( req, res ){
   }else{
     db.view( 'datasets/byUser', {  key: req.user.id }, function( err, docs ){
       console.log( docs );
-      res.render( 'dashboard/index', { 'datasets': docs, 'user': req.user } );
+      res.render( 'dashboard/index', { 'thesets': docs, 'user': req.user } );
     })
   }
 })

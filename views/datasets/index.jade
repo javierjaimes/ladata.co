@@ -18,16 +18,16 @@ block content
           th Creada
           th Acciones
       tbody
-        - for( var i in datasets ){
+        - for( var i in thesets ){
           tr
             th= +i + 1
             td 
-              a( href="/datasets/" + datasets[i].id  )= datasets[i].value.name
-            td= datasets[i].value.created_at
+              a( href="/datasets/" + thesets[i].id  )= thesets[i].value.name
+            td= thesets[i].value.created_at
             td
-              a(href="/datasets/" + datasets[i].id + "/edit") Editar
+              a(href="/datasets/" + thesets[i].id + "/edit") Editar
               |  | 
-              button.btn-delete(type="button", data-type="datasets", data-dataset=datasets[i].id, href="/datasets/" + datasets[i].id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: 0.8em;" ) Eliminar
+              button.btn-delete(type="button", data-type="datasets", data-dataset=thesets[i].id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: 0.8em;" ) Eliminar
                 
         - }
     .separator
