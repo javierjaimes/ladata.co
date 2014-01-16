@@ -134,7 +134,7 @@ app.get( '/', function( req, res ){
     console.log( 'user id', req.user.id );
     db.view( 'datasets/byUser', {  'key': req.user.id, 'reduce':false }, function( err, docs ){
       console.log( docs );
-      res.render( 'dashboard/index', { 'sets': docs, 'user': req.user } );
+      res.render( 'dashboard/index', { 'sets': docs, 'current_user': req.user } );
     })
   }
 })
@@ -149,7 +149,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 app.get( '/clients/new', session.ensureLoggedIn( '/login' ), function( req, res){
-  res.render( 'clients/new' );
+  res.render( 'clients/new', { 'current_user':req.user} );
 } )
 app.get( '/clients/:id', session.ensureLoggedIn( '/login' ), function( req, res ){
   client = req.params.id
@@ -161,7 +161,7 @@ app.get( '/clients/:id', session.ensureLoggedIn( '/login' ), function( req, res 
       console.log( 'token' );
       console.log( doc );
     
-      res.render( 'clients/show', { 'my_client': client, 'my_token': (doc.length > 0)? doc[0]:false } );
+      res.render( 'clients/show', { 'my_client': client, 'my_token': (doc.length > 0)? doc[0]:false, 'current_user':req.user } );
     } )
   })
 
@@ -172,14 +172,14 @@ app.get( '/clients/:id/edit', session.ensureLoggedIn( '/login' ), function( req,
   client = req.params.id
   db.get( client, function( err, doc ){
     if( err ){ console.log( err ); }
-    res.render( 'clients/edit', { 'my_client': doc } );
+    res.render( 'clients/edit', { 'my_client': doc, 'current_user': req.user } );
   })
 
 } )
 
 app.get( '/clients', session.ensureLoggedIn( '/login' ), function( req, res){
   db.view( 'clients/byUser', { key: req.user.id }, function( err, docs ){
-    res.render( 'clients/index', { 'clients': docs } );
+    res.render( 'clients/index', { 'clients': docs, 'current_user':req.user } );
   })
 } )
 app.post( '/clients/:id', session.ensureLoggedIn( '/login' ), function( req, res ){
@@ -274,12 +274,12 @@ app.get( '/datasets', session.ensureLoggedIn('/login'), function( req, res ){
     console.log( 'THE DATASETS'  );
     if( err ){ console.log(err); }
     console.log( docs );
-    res.render( 'datasets/index', { 'sets': docs } );
+    res.render( 'datasets/index', { 'sets': docs, 'current_user': req.user } );
   } )
 })
 
 app.get( '/datasets/new', session.ensureLoggedIn( '/login' ), function( req, res ){
-  res.render( 'datasets/new' );
+  res.render( 'datasets/new', { 'current_user': req.user } );
 } )
 
 app.get( '/datasets/:id/new', session.ensureLoggedIn( '/login' ), function( req, res){
@@ -287,7 +287,7 @@ app.get( '/datasets/:id/new', session.ensureLoggedIn( '/login' ), function( req,
   dataset_id = req.params.id;
 
   db.get( dataset_id, function( err, doc ){
-    res.render( 'data/new', { 'theset': doc } )
+    res.render( 'data/new', { 'theset': doc, 'current_user':req.user } )
   })
 } )
 app.get( '/datasets/:id', function( req, res ){
@@ -322,7 +322,7 @@ app.get( '/datasets/:id/edit', session.ensureLoggedIn( '/login' ), function( req
     if( err ){ console.log( err ); }
     console.log( doc );
 
-    res.render( 'datasets/edit', { 'thedataset': doc } )
+    res.render( 'datasets/edit', { 'thedataset': doc, 'current_user':req.user } )
   })
 })
 
@@ -421,7 +421,7 @@ app.get( '/data/:id/edit', session.ensureLoggedIn( '/login' ), function( req, re
     db.get( doc.dataset_id, function( err, doc ){
       if( err ){ console.log( err ); }
     
-      res.render( 'data/edit', { 'theset':doc,'thedata': data  } );
+      res.render( 'data/edit', { 'theset':doc,'thedata': data, 'current_user':req.user  } );
     })
   })
 })
