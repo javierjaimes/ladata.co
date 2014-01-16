@@ -283,7 +283,7 @@ app.get( '/datasets/:id', function( req, res ){
 
     db.view( 'data/byDataset', { key: doc._id }, function( err, docs ){
       console.log( 'THE DATA' );
-      console.log( docs );
+      console.log( 'data', docs );
 
       res.render( 'datasets/show', { 'theset': doc, 'rows': docs, 'user': req.user } );
     } )
