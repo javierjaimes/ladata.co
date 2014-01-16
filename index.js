@@ -112,7 +112,7 @@ app.get( '/', function( req, res ){
   if( req.user == undefined ){
     res.render( 'index', { user: req.user } );
   }else{
-    db.view( 'datasets/byUser', {  key: req.user.id }, function( err, docs ){
+    db.view( 'datasets/byUser', {  'key': req.user.id, 'reduce':false }, function( err, docs ){
       console.log( docs );
       res.render( 'dashboard/index', { 'sets': docs, 'user': req.user } );
     })
