@@ -1,0 +1,41 @@
+!!! 5
+html.no-js(lang="en", dir="ltr")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    title Ladata.co || La Manera Mas Simple de Compartir Su "Data"
+    meta(name="description", content="")
+    meta(name="viewport", content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width")
+
+    link(rel="dns-prefetch", href="http://fonts.googleapis.com/")
+    link(rel="dns-prefetch", href="http://ajax.googleapis.com/")
+    link(rel="dns-prefetch", href="http://html5shim.googlecode.com/")
+    link(rel="dns-prefetch", href="http://google-analytics.com/")
+    link(rel="shortcut icon", href="/static/images/favicon.ico")
+
+    link(rel="apple-touch-icon", href="/static/images/apple-touch-icon-57x57-precomposed.png")
+    link(rel="apple-touch-icon", size="72x72", href="/static/images/apple-touch-icon-72x72-ipad.png")
+    link(rel="apple-touch-icon", size="114x114", href="/static/images/apple-touch-icon-114x114-retina.png")
+    link(rel="apple-touch-icon", size="144x144", href="/static/images/apple-touch-icon-144x144-retina.png")
+
+    link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,400italic")
+    link(rel="stylesheet", type="text/css", href="/static/stylesheets/reset.css")
+    link(rel="stylesheet", type="text/css", href="/static/stylesheets/styles.css")
+    link(rel="stylesheet", type="text/css", href="/static/stylesheets/font-awesome.css")
+    block before_start
+    //if lt IE
+      link(rel="stylesheet", type="text/css", media="all", href="static/stylesheets/fix-old-ie.css")
+    //if lt IE 9
+      script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+
+  body.sectionteal
+    //if IE
+      script(src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js")
+      style.
+        .chromeFrameInstallDefaultStyle { width: 100%; border: 5px solid #ffa700; }</style>
+        div#prompt
+      script.
+        window.attachEvent("onload", function() {CFInstall.check({mode: "overlay", node: "prompt"});});
+    block content
+    block before_end
+

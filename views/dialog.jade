@@ -1,15 +1,20 @@
-doctype 5
-html(lang="en")
-  head
-  title ladata.co
-  body
-    p Autorizar o declinar
-    p #{user.name}
-    p
-      b #{client_id.name} is requesting access to your account.
-    p Do you approve?
+extends layouts/api
 
-    form( action='/dialog/authorize/decision', method='post')
-      input(name='transaction_id', type='hidden', value='#{transactionID}')
-      input(type='submit', value='Allow', id='allow')
-      input(type='submit', value='Deny', name='cancel', id='deny')
+block content
+  .sectionteal
+    section
+      .separator
+        .line
+        h2 Autorizar
+        .line
+      .clear
+      #form.contact-form
+        form( action='/dialog/authorize/decision', method='post')
+          h1(style='color: #666') #{user.name}
+          p(style='color:#555;') La aplicacion 
+            b(style="font-weight: bold;") #{client_id.name} 
+            | esta solicitando acceso a tu cuenta.
+          fieldset.fsubmit(style="margin: 0 auto; float: none;")
+            input(name='transaction_id', type='hidden', value='#{transactionID}')
+            button.btn.btn-primary.btn-submit(type='submit', id='allow') Aceptar
+            button.btn.btn-danger.btn-submit(type='submit', name='cancel', id='deny') Cancelar
