@@ -41,7 +41,7 @@ html.no-js(lang="en", dir="ltr")
         .logo.clearfix
           a( href="#home" )
         ul#menu
-          - if( user.id ){
+          - if( current_user ){
             li
               a( href="/datasets" ) Listas de Datos
             li
