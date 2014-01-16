@@ -292,6 +292,8 @@ app.get( '/datasets/:id/new', session.ensureLoggedIn( '/login' ), function( req,
 } )
 app.get( '/datasets/:id', function( req, res ){
   console.log( 'GET ID LIST' )
+  console.log( 'user', req.user );
+
   console.log( req.params.id );
 
   dataset_id = req.params.id;
@@ -307,7 +309,7 @@ app.get( '/datasets/:id', function( req, res ){
       console.log( 'THE DATA' );
       console.log( 'data', docs );
 
-      res.render( 'datasets/show', { 'theset': doc, 'rows': docs, 'user': req.user } );
+      res.render( 'datasets/show', { 'theset': doc, 'rows': docs, 'current_user': req.user } );
     } )
 
   } )

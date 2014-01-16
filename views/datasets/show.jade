@@ -19,9 +19,9 @@ block content
               -for( var i in theset.fields ){
                 th= theset.fields[i].name
               -}
-              - if( user.id ){if (user.id = theset.user_id ){
+              - if( current_user ){
                 th( width="100") Acciones
-              -}}
+              -}
           tbody
             if rows.length > 0
               -for( var i in rows ){
@@ -30,11 +30,9 @@ block content
                   - for( var j in theset.fields ){
                     td= rows[i].value.fields[j]
                   - }
-                  - if( user.id ){ if (user.id = theset.user_id ){
-                    td
-                      a(href="/data/" + rows[i].id + "/edit") Editar
-                      button.btn-delete(type="button", data-type="data", data-id=rows[i].id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: .8em; cursor: pointer;") Eliminar
-                  -}}
+                  td
+                    a(href="/data/" + rows[i]._id + "/edit") Editar
+                    button.btn-delete(type="button", data-type="data", data-id=rows[i]._id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: .8em; cursor: pointer;") Eliminar
               -}
       .sidebar(style="float: left; width: 280px; margin-right: -1000px; ")
         section.sectiongrey( style="text-align: left; padding: 0;" )
@@ -45,7 +43,11 @@ block content
           ol.lists
             li 
               | Lista creada por: 
-              = (user)? user.name : ''
+              - if( current_user ){
+                = current_user.name
+              - }else{
+                | NONE
+              - }
             li
               | Creada el: 
               = new Date( theset.created_at ).getDate() + '-' + new Date(theset.created_at ).getMonth() + '-' +  new Date( theset.created_at ).getFullYear()
@@ -58,8 +60,8 @@ block content
         .clear
         section.sectionteal(style="padding-top: 0; padding-bottom: 0; margin-top: 10px;")
           a.btn.btn-large.btn-primary( href="/datasets/" + theset.id + "/new", style="display: block; margin: 1px; color: #fff;" ) Agregar Datos
+        - if( current_user ){
         .clear
-        - if( user.id ){
         section.sectionteal(style="padding-top: 0; padding-bottom: 0; margin-top: 10px;")
           a.btn.btn-large.btn-primary( href="/datasets/" + theset.id + "/edit", style="display: block; margin: 1px; color: #fff;" ) Editar Tabla
         .clear
