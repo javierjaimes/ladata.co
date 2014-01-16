@@ -22,13 +22,13 @@ block content
           tr
             td= +i + 1
             td
-              a( href="/clients/" + clients[i].id )= clients[i].value.name
+              a( href="/clients/" + clients[i].value._id )= clients[i].value.name
             td= clients[i].value._id
             td= clients[i].value.secret
             td
-              a( href="/clients/" + clients[i].id + "/edit" ) Editar
+              a( href="/clients/" + clients[i].value._id + "/edit" ) Editar
               | | 
-              a.btn-delete( href="/clients/" + clients[i].id, data-type="client", data-client=clients[i].id) Eliminar
+              button.btn-delete(type="button", data-type="clients", data-client=clients[i].value._id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: 0.8em;" ) Eliminar
         - } 
     .separator
       a(href="/clients/new") Crear una aplicacion
@@ -39,7 +39,7 @@ block  before_end
    
     (function( $ ){
       $(function(){
-        $( '.btn-delete[data-type="client"]' ).on( 'click', function( event ){
+        $( '.btn-delete[data-type="clients"]' ).on( 'click', function( event ){
           event.preventDefault();
 
           client = $( this ).data( 'client' );
