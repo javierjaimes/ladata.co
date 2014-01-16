@@ -52,7 +52,8 @@ block content
             li
               | Ultima actualizacion: 
               = new Date( theset.updated_at ).getDate() + '-' + new Date(theset.updated_at ).getMonth() + '-' +  new Date( theset.updated_at ).getFullYear()
-            li Api: http://api.ladata.co/datasets/#{theset.id}
+            li 
+              input(type="text", disabled="disabled" )Api: http://api.ladata.co/datasets/#{theset.id}
         .clear
         section.sectionteal(style="padding-top: 0; padding-bottom: 0; margin-top: 10px;")
           a.btn.btn-large.btn-primary( href="/datasets/" + theset.id + "/new", style="display: block; margin: 1px; color: #fff;" ) Agregar Datos
