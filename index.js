@@ -281,7 +281,7 @@ app.get( '/datasets/:id', function( req, res ){
     console.log( doc._id );
     console.log( doc.id );
 
-    db.view( 'data/byDataset', { key: doc._id }, function( err, docs ){
+    db.view( 'data/byDataset', { key: doc._id, reduce: false }, function( err, docs ){
       if( err ){ console.log( 'err', err ); }
 
       console.log( 'THE DATA' );
