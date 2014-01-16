@@ -65,16 +65,35 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-    done(null, { name: 'Javier Jaimes', id:1, username: 'javier'});
+  console.log( id );
+  db.get( id, function( err, doc ){
+    if( err ){ console.log( err ); } 
+    console.log( 'USER FIND', doc );
+
+    done(null, { 'name': doc.name, 'id':doc._id, 'username': doc.email });
+  })
 });
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    if( username == 'javier' && password == '123' ){
-      return done(null, { name:'Javie Jaimes', id:1, username:'javier'});
-    }else{
-      return done(null, false, { message: 'Datos incorrectos' });
-    }
+    db.view( 'users/byEmail', { 'key': username, 'reduce': false }, function( err, doc ){
+      if( err ){ console.log( err ); } 
+
+      user = doc[0];
+      console.log( 'user', user );
+
+      bcrypt.compare( password, user.value.hash, function(err, res) {
+        // res == true
+        console.log( 'err', err );
+        console.log( 'res', res );
+        if( res ){
+          return done(null, { 'name': user.value.name, 'id':user.value._id, 'username': user.value.email });
+        }else{
+          return done(null, false, { message: 'Datos incorrectos' });
+        }
+      });
+
+    } )
   }
 ));
 
@@ -112,6 +131,7 @@ app.get( '/', function( req, res ){
   if( req.user == undefined ){
     res.render( 'index', { user: req.user } );
   }else{
+    console.log( 'user id', req.user.id );
     db.view( 'datasets/byUser', {  'key': req.user.id, 'reduce':false }, function( err, docs ){
       console.log( docs );
       res.render( 'dashboard/index', { 'sets': docs, 'user': req.user } );
@@ -494,7 +514,7 @@ app.post( '/users', function( req, res ){
 
         if( err ){ return res.redirect( 'signup' ); }
 
-        return res.render( 'users/register' );
+        res.redirect( '/login' );
       })
     })
   })
