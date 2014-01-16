@@ -19,7 +19,7 @@ block content
               -for( var i in theset.fields ){
                 th= theset.fields[i].name
               -}
-              - if( user ){if (user.id = theset.user_id ){
+              - if( user.id ){if (user.id = theset.user_id ){
                 th( width="100") Acciones
               -}}
           tbody
@@ -30,7 +30,7 @@ block content
                   - for( var j in theset.fields ){
                     td= rows[i].value.fields[j]
                   - }
-                  - if( user){ if (user.id = theset.user_id ){
+                  - if( user.id ){ if (user.id = theset.user_id ){
                     td
                       a(href="/data/" + rows[i].id + "/edit") Editar
                       button.btn-delete(type="button", data-type="data", data-id=rows[i].id, style="background: none; border: none; color: #f00; text-decoration: underline; font-size: .8em; cursor: pointer;") Eliminar
@@ -59,7 +59,7 @@ block content
         section.sectionteal(style="padding-top: 0; padding-bottom: 0; margin-top: 10px;")
           a.btn.btn-large.btn-primary( href="/datasets/" + theset.id + "/new", style="display: block; margin: 1px; color: #fff;" ) Agregar Datos
         .clear
-        - if( user ){
+        - if( user.id ){
         section.sectionteal(style="padding-top: 0; padding-bottom: 0; margin-top: 10px;")
           a.btn.btn-large.btn-primary( href="/datasets/" + theset.id + "/edit", style="display: block; margin: 1px; color: #fff;" ) Editar Tabla
         .clear

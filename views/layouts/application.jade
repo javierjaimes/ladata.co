@@ -41,12 +41,25 @@ html.no-js(lang="en", dir="ltr")
         .logo.clearfix
           a( href="#home" )
         ul#menu
-          li
-            a( href="/datasets" ) Listas de Datos
-          li
-            a( href="/clients" ) Aplicaciones
-          li
-            a( href="/logout" ) Salir
+          - if( user.id ){
+            li
+              a( href="/datasets" ) Listas de Datos
+            li
+              a( href="/clients" ) Aplicaciones
+            li
+              a( href="/logout" ) Salir
+          - }else{
+            li.first
+              a(href="/") Inicio
+            li
+              a(href="#") Acerca De
+            li
+              a(href="#") Ser parte
+            li
+              a( href="#" ) Contacto
+            li
+              a( href="/login" ) Iniciar Sesion
+          -}
 
         form.menu-dropdown.hidden
           select(onchange="location= this.options[this.selectedIndex].value;")
