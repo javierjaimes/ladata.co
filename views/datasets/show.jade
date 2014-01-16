@@ -6,7 +6,7 @@ block content
   section(style="min-height: 500px;")
     .separator
       .line
-      h2 Lista
+      h2 LISTA DE DATOS
       .line
     .clear
     .wrapper(style="margin: 0 auto; max-width: 700px; padding-right: 320px;")
@@ -54,7 +54,7 @@ block content
               = new Date( theset.updated_at ).getDate() + '-' + new Date(theset.updated_at ).getMonth() + '-' +  new Date( theset.updated_at ).getFullYear()
             li 
               | API:
-              input(type="text", disabled="disabled", value="http://api.ladata.co/datasets/#{theset.id}") 
+              input(type="text", disabled="disabled", value="http://api.ladata.co/datasets/#{theset.id}/") 
         .clear
         section.sectionteal(style="padding-top: 0; padding-bottom: 0; margin-top: 10px;")
           a.btn.btn-large.btn-primary( href="/datasets/" + theset.id + "/new", style="display: block; margin: 1px; color: #fff;" ) Agregar Datos
