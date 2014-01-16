@@ -251,6 +251,7 @@ app.get( '/datasets', session.ensureLoggedIn('/login'), function( req, res ){
   user = req.user.id;
 
   db.view( 'datasets/byUser', { key: user }, function( err, docs){
+    console.log( 'THE DATASETS'  );
     console.log( docs );
     res.render( 'datasets/index', { 'sets': docs } );
   } )
